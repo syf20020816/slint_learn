@@ -1,0 +1,11 @@
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 300px;
+  property <[color]> colors : [#ff9d9d,#fff,#c4c4c4,#111,#444] ;
+  for color[index] in colors:  Rectangle {
+    height: root.height;
+    width: root.width / colors.length;
+    x:self.width *  index; 
+    background: color; 
+  }
+}

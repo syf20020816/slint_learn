@@ -1,0 +1,25 @@
+import { Button } from "std-widgets.slint";
+component MyBtn inherits Text{
+  in-out property <int> num:0;
+  callback click;
+  click => {
+    self.num += 1;
+  }
+}
+
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 300px;
+  Button { 
+    text: "add 1";
+    clicked => {
+      btn.click()
+    }
+  }
+  btn:=MyBtn {
+    x: 10px;
+    y: 10px;
+    font-size: 20px;
+    text: self.num;
+  }
+}

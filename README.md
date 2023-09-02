@@ -2,7 +2,7 @@
 
 - author：syf20020816@outlook.com
 - updateDate：20230902
-- github：
+- github：https://github.com/syf20020816/slint_learn
 
 # 如何学习本文档
 
@@ -33,9 +33,9 @@
 
 我建议大家使用VSCode进行Slint开发，VSCode提供的插件对Slint十分友好，插件如下：
 
-![image-20230902121630598](E:\Rust\learn\slint_learn\README\imgs\image-20230902121630598.png)
+![image-20230902121630598](.\README\imgs\image-20230902121630598.png)
 
-![image-20230902121638124](E:\Rust\learn\slint_learn\README\imgs\image-20230902121638124.png)
+![image-20230902121638124](.\README\imgs\image-20230902121638124.png)
 
 # Slint With Rust
 
@@ -57,7 +57,7 @@ slint::slint!{}
 
 实际上更推荐更好的方式应该是slint文件于rs文件的分离
 
-![image-20230901032611576](E:\Rust\learn\slint_learn\README\imgs\image-20230901032611576.png)
+![image-20230901032611576](.\README\imgs\image-20230901032611576.png)
 
 ## 1.添加编译依赖（slint-build）
 
@@ -137,7 +137,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901044105838](E:\Rust\learn\slint_learn\README\imgs\image-20230901044105838.png)
+![image-20230901044105838](.\README\imgs\image-20230901044105838.png)
 
 ## 文本Text
 
@@ -167,7 +167,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901045927835](E:\Rust\learn\slint_learn\README\imgs\image-20230901045927835.png)
+![image-20230901045927835](.\README\imgs\image-20230901045927835.png)
 
 ## 按钮Button
 
@@ -192,7 +192,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901055536612](E:\Rust\learn\slint_learn\README\imgs\image-20230901055536612.png)
+![image-20230901055536612](.\README\imgs\image-20230901055536612.png)
 
 ### functions
 
@@ -265,7 +265,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901082823831](E:\Rust\learn\slint_learn\README\imgs\image-20230901082823831.png)
+![image-20230901082823831](.\README\imgs\image-20230901082823831.png)
 
 ## 输入框TextInput
 
@@ -296,7 +296,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901082809428](E:\Rust\learn\slint_learn\README\imgs\image-20230901082809428.png)
+![image-20230901082809428](.\README\imgs\image-20230901082809428.png)
 
 ## 图片Image
 
@@ -322,7 +322,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901082746288](E:\Rust\learn\slint_learn\README\imgs\image-20230901082746288.png)
+![image-20230901082746288](.\README\imgs\image-20230901082746288.png)
 
 ## 滚动窗口 Flickable
 
@@ -350,7 +350,7 @@ export component MainWindow inherits Dialog {
 }
 ```
 
-![image-20230901091507127](E:\Rust\learn\slint_learn\README\imgs\image-20230901091507127.png)
+![image-20230901091507127](.\README\imgs\image-20230901091507127.png)
 
 ## 网格布局 GridLayout
 
@@ -371,7 +371,7 @@ export component MainWindow inherits Dialog {
 >
 > 这里的第二行的白色Rectangle列占比应该是2但是显示的却是1，经过叠放检查得出白色盒子的另一半被绿色覆盖，所以弱指定无法推测出绿色盒子实际上应该在第3列，需要手动指定`col:2`
 >
-> ![image-20230901132355723](E:\Rust\learn\slint_learn\README\imgs\image-20230901132355723.png)
+> ![image-20230901132355723](.\README\imgs\image-20230901132355723.png)
 
 ### example
 
@@ -399,7 +399,7 @@ export component MainWindow inherits Dialog {
 }
 ```
 
-![image-20230901133014226](E:\Rust\learn\slint_learn\README\imgs\image-20230901133014226.png)
+![image-20230901133014226](.\README\imgs\image-20230901133014226.png)
 
 ## 横纵布局 HorizontalLayout | VerticalLayout
 
@@ -453,7 +453,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901135602285](E:\Rust\learn\slint_learn\README\imgs\image-20230901135602285.png)
+![image-20230901135602285](.\README\imgs\image-20230901135602285.png)
 
 ### VerticalLayout
 
@@ -501,7 +501,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901140211538](E:\Rust\learn\slint_learn\README\imgs\image-20230901140211538.png)
+![image-20230901140211538](.\README\imgs\image-20230901140211538.png)
 
 ## 画板 Path
 
@@ -525,7 +525,7 @@ commands:"M ..."
 - `A(radius_x:float,radius_y:float,large_arc:bool,sweep:bool,x_rotation:float,x:float,y:float)`: `ArcTo`
   - radius_x : 内切椭圆横长半径
   - radius_y : 内切椭圆纵长半径
-  - ![image-20230901143834518](E:\Rust\learn\slint_learn\README\imgs\image-20230901143834518.png)
+  - ![image-20230901143834518](.\README\imgs\image-20230901143834518.png)
   - large_arc：在封闭椭圆的两个弧中，此标志选择要渲染较大的弧。如果属性为false，则会呈现较短的弧度
   - sweep：绘制顺时针或逆时针方向（true为顺时针）
   - x_rotation：内切椭圆按照x轴旋转的度数
@@ -581,7 +581,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901141811696](E:\Rust\learn\slint_learn\README\imgs\image-20230901141811696.png)
+![image-20230901141811696](.\README\imgs\image-20230901141811696.png)
 
 ## 🚩Flag
 
@@ -629,7 +629,7 @@ export component MainWindow inherits Window {
 
 ```
 
-### Slint组件结构9
+### Slint组件结构
 
 slint的组件结构为树形结构，每个slint文件都可以定义一个或多个组件
 
@@ -789,7 +789,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230902203615470](E:\Rust\learn\slint_learn\README\imgs\image-20230902203615470.png)
+![image-20230902203615470](.\README\imgs\image-20230902203615470.png)
 
 ### 数组
 
@@ -803,8 +803,6 @@ export component MainWindow inherits Window {
   background: colors[1];
 }
 ```
-
-
 
 ## 属性
 
@@ -869,9 +867,158 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230902201146649](E:\Rust\learn\slint_learn\README\imgs\image-20230902201146649.png)
+![image-20230902201146649](.\README\imgs\image-20230902201146649.png)
 
+## 函数与回调
 
+### 函数
+
+我们可以在组件中定义一些函数帮助组件进行工作，对于函数而言，它在组件内进行定义，在 Slint 中，如果一个函数在组件的属性定义中被调用，它必须是纯函数，即给定相同的输入参数，始终返回相同的结果。纯函数需要使用`pure`关键字进行声明，纯函数也被称为一种回调（我这样认为）。
+
+```
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 300px;
+  title: text.get-name();
+  text:=Text {
+    text: "I am Text";
+    property<string> name : "text";
+    pure public function get_name()-> string {
+      self.name;
+    }
+  }
+}
+```
+
+![image-20230903013751972](E:\Rust\learn\slint_learn\README\imgs\image-20230903013751972.png)
+
+### 回调
+
+组件可以声明回调，用来传递状态的变化到组件外。
+
+对于回调我们通常需要经过2个步骤进行定义：
+
+- 声明回调：使用`callback`关键字进行声明
+- 编写回调：使用箭头函数进行声明
+
+回调是特殊的函数，因此回调也可以有入参和返回值，请在回调声明时进行控制
+
+```slint
+import { Button } from "std-widgets.slint";
+component MyBtn inherits Text{
+  in-out property <int> num:0;
+  callback click;
+  click => {
+    self.num += 1;
+  }
+}
+
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 300px;
+  Button { 
+    text: "add 1";
+    clicked => {
+      btn.click()
+    }
+  }
+  btn:=MyBtn {
+    x: 10px;
+    y: 10px;
+    font-size: 20px;
+    text: self.num;
+  }
+}
+```
+
+![image-20230903021224754](E:\Rust\learn\slint_learn\README\imgs\image-20230903021224754.png)
+
+#### 回调别名
+
+回调也可以有别名，可以使用双向绑定的方式设置回调别名
+
+```
+export component Example inherits Rectangle {
+    callback clicked <=> area.clicked;
+    area := TouchArea {}
+}
+```
+
+## 条件于循环
+
+### 条件
+
+在slint中条件语句的构造和其他语言一样都是`if - else if - else`
+
+```
+if(条件){}
+else if (条件){}
+else{}
+```
+
+当然条件也可以使用在构造组件上，用于判断组件状态
+
+```
+if 条件 : 组件
+```
+
+### 三元表达式
+
+通过三元表达式可以做到条件语句的功能
+
+```
+条件?匹配成功返回值:失败的返回值
+```
+
+### 循环
+
+通过使用循环可以做到组件复制，其中item是循环对象的中的某个元素（顺序），`[index]`当前item的索引，个人认为这样的语法较为不妥，我更喜欢如：`for (item,index) in `这种
+
+```
+for item[index] in 循环对象
+```
+
+#### example
+
+```
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 300px;
+  property <[color]> colors : [#ff9d9d,#fff,#c4c4c4,#111,#444] ;
+  for color[index] in colors:  Rectangle {
+    height: root.height;
+    width: root.width / colors.length;
+    x:self.width *  index; 
+    background: color; 
+  }
+}
+```
+
+![image-20230903030107025](E:\Rust\learn\slint_learn\README\imgs\image-20230903030107025.png)
+
+## 动画
+
+通过`animate`进行定义动画，动画中需要定义的参数如下：
+
+- `delay`：开始动画之前等待的时间量
+- `duration`：动画完成所需的时间
+- `iteration-count`：动画应运行的次数。负值指定动画无限重播
+- `easing`：动画速率，可以`linear`、`ease`、`ease-in`、`ease-out`、`ease-in-out`、`cubic-bezier(a, b, c, d)`
+
+```
+export component MainWindow inherits Window {
+  width: 300px;
+  height: 300px;
+  background: area.pressed ? #fff : red;
+  animate background {
+      duration: 100ms;
+  }
+
+  area := TouchArea {
+    
+  }
+}
+```
 
 
 
@@ -908,7 +1055,7 @@ export component MainWindow inherits Dialog {
 }
 ```
 
-
+## 
 
 # 属性速查
 
@@ -1017,7 +1164,7 @@ drop-shadow-offset-x：2px;
 | default-font-family | 默认文字类型（String）       | default-font-family: "Helvetica,Verdana,Arial,sans-serif";   |
 | default-font-size   | 默认文字大小(Size)           | default-font-size: 16px;                                     |
 | default-font-weight | 默认文字粗细（Int）          | default-font-weight:700                                      |
-| background          | 背景(Color)                  | background: @linear-gradient(90deg,#ddd 0%,#ddc5c5 50%,#ed9797 100%); |
+| background          | 背景(Color.brush)            | background: @linear-gradient(90deg,#ddd 0%,#ddc5c5 50%,#ed9797 100%); |
 | always-on-top       | 永远处于其他页面上层（Bool） | always-on-top: true;                                         |
 | no-frame            | 无边框，默认false（Bool）    | no-frame: false;                                             |
 | icon                | 窗口图标（Image）            | icon: @image-url("../../imgs/rust.png");                     |
@@ -1031,10 +1178,10 @@ drop-shadow-offset-x：2px;
 | vertical-alignment   | 纵向对齐（TextVerticalAlignment）   | default-font-size: 16px;                                   |
 | wrap                 | 文字换行（TextWrap）                | default-font-weight:700                                    |
 | overflow             | 文字超出策略（TextOverflow）        | overflow: elide;                                           |
-| font-size            | 文字大小（Size）                    | font-size: 20px;                                           |
-| color                | 文字颜色（Color）                   | color: #fff;                                               |
+| font-size            | 文字大小（Length.size）             | font-size: 20px;                                           |
+| color                | 文字颜色（Color.color）             | color: #fff;                                               |
 | font-weight          | 文字粗细(Int)                       | font-weight:700;                                           |
-| letter-spacing       | 文字间隔大小（Size）                | letter-spacing:2px;                                        |
+| letter-spacing       | 文字间隔大小（Length.size）         | letter-spacing:2px;                                        |
 | text                 | 文字内容（String）                  | text: "I am a Text component";                             |
 
 ### TextOverflow
@@ -1078,7 +1225,7 @@ drop-shadow-offset-x：2px;
 | selection-background-color | 输入时文字的背景色（Color）  | selection-background-color: blue; |
 | selection-foreground-color | 输入时文字的颜色（Color）    | selection-foreground-color: red;  |
 | single-line                | 是否为单行，即不换行（Bool） | single-line: false;               |
-| text-cursor-width          | 光标的宽度（Size）           | text-cursor-width:8px;            |
+| text-cursor-width          | 光标的宽度（Length.size）    | text-cursor-width:8px;            |
 
 ###  InputType
 
@@ -1089,16 +1236,16 @@ drop-shadow-offset-x：2px;
 
 ## 图片属性 Image Params
 
-| 属性                                  | 说明（类型）                   | 示例                                       |
-| ------------------------------------- | ------------------------------ | ------------------------------------------ |
-| colorize                              | 覆盖前景色（Color）            | colorize:Colors.aliceblue;                 |
-| source                                | 图像源（URL）                  | source: @image-url("../../imgs/rust.png"); |
-| image-fit                             | 图片填充类型（ImageFit）       | image-fit:fill;                            |
-| image-rendering                       | 图片缩放方式（ImageRendering） | image-rendering: smooth;                   |
-| rotation-origin-x，rotation-origin-y  | 设置旋转中心的位置（Size）     | rotation-origin-x: 23px;                   |
-| rotation-angle                        | 旋转角度（Size.deg）           | rotation-angle: 30deg;                     |
-| source-clip-height，source-clip-width | 裁剪高度\|宽度（Size.length）  | source-clip-height: 200;                   |
-| source-clip-x，source-clip-y          | 裁剪位置（Size.length）        | source-clip-x: 100;                        |
+| 属性                                  | 说明（类型）                      | 示例                                       |
+| ------------------------------------- | --------------------------------- | ------------------------------------------ |
+| colorize                              | 覆盖前景色（Color）               | colorize:Colors.aliceblue;                 |
+| source                                | 图像源（Image）                   | source: @image-url("../../imgs/rust.png"); |
+| image-fit                             | 图片填充类型（ImageFit）          | image-fit:fill;                            |
+| image-rendering                       | 图片缩放方式（ImageRendering）    | image-rendering: smooth;                   |
+| rotation-origin-x，rotation-origin-y  | 设置旋转中心的位置（Length.size） | rotation-origin-x: 23px;                   |
+| rotation-angle                        | 旋转角度（angle）                 | rotation-angle: 30deg;                     |
+| source-clip-height，source-clip-width | 裁剪高度\|宽度（Length.size）     | source-clip-height: 200;                   |
+| source-clip-x，source-clip-y          | 裁剪位置（Length.size）           | source-clip-x: 100;                        |
 
 ### ImageFit
 
@@ -1120,22 +1267,22 @@ drop-shadow-offset-x：2px;
 | 属性                            | 说明（类型）                            | 示例                    |
 | ------------------------------- | --------------------------------------- | ----------------------- |
 | interactive                     | 输入框类型（InputType）                 | interactive: true;      |
-| viewport-height，viewport-width | 滚动窗口大小（Size.length）             | viewport-height: 300px; |
-| viewport-x，viewport-y          | 子元素相对滚动窗口的位置（Size.length） | viewport-x: 0px;        |
+| viewport-height，viewport-width | 滚动窗口大小（Length.size）             | viewport-height: 300px; |
+| viewport-x，viewport-y          | 子元素相对滚动窗口的位置（Length.size） | viewport-x: 0px;        |
 
 ## 网格布局 GridLayOut
 
 | 属性                             | 说明（类型）              | 示例           |
 | -------------------------------- | ------------------------- | -------------- |
-| spacing                          | 元素间距（Size.length）   | spacing: 10px; |
-| padding（left,right,top,bottom） | 布局内边距（Size.length） | padding: 4px;  |
+| spacing                          | 元素间距（Length.size）   | spacing: 10px; |
+| padding（left,right,top,bottom） | 布局内边距（Length.size） | padding: 4px;  |
 
 ## 横纵布局 HorizontalLayout | VerticalLayout
 
 | 属性                             | 说明（类型）                        | 示例           |
 | -------------------------------- | ----------------------------------- | -------------- |
-| spacing                          | 元素间距（Size.length）             | spacing: 10px; |
-| padding（left,right,top,bottom） | 布局内边距（Size.length）           | padding: 4px;  |
+| spacing                          | 元素间距（Length.size）             | spacing: 10px; |
+| padding（left,right,top,bottom） | 布局内边距（Length.size）           | padding: 4px;  |
 | alignment                        | 元素排列对齐方式（LayoutAlignment） | alignment: end |
 
 ### LayoutAlignment

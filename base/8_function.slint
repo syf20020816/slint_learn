@@ -1,0 +1,12 @@
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 300px;
+  title: text.get-name();
+  text:=Text {
+    text: "I am Text";
+    property<string> name : "text";
+    pure public function get_name()-> string {
+      self.name;
+    }
+  }
+}
