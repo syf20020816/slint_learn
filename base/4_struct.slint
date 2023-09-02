@@ -1,0 +1,13 @@
+struct User {
+  name:string,
+  age:int,
+}
+
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 300px;
+  Text {
+    property <User> user:{name:"I am Mat",age:16};
+    text: user.name;
+  }
+}

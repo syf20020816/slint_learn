@@ -1,0 +1,41 @@
+export component MainWindow inherits Window {
+  height: 200px;
+  width: 480px;
+  title: "VerticalLayout!";
+  VerticalLayout {
+    spacing: 5px;
+    padding: 6px;
+    height: root.height;
+    width: 150px;
+    x: 0px;
+    y: 0px;
+    alignment: center;
+    Rectangle {background: red;height: 30px;width: 50px;}
+    Rectangle {background: green; height: 30px;width: 100px;}
+    Rectangle {background: blue; height: 80px;width: 50px;}
+  }
+  VerticalLayout {
+    spacing: 5px;
+    padding: 6px;
+    height: root.height;
+    width: 150px;
+    x: 160px;
+    y: 0px;
+    alignment: space-around;
+    Rectangle {background: red;height: 30px;width: 50px;}
+    Rectangle {background: green; height: 30px;width: 100px;}
+    Rectangle {background: blue; height: 80px;width: 50px;}
+  }
+  VerticalLayout {
+    spacing: 5px;
+    padding: 6px;
+    height: root.height;
+    width: 150px;
+    x: 320px;
+    y: 0px;
+    alignment: end;
+    Rectangle {background: red;height: 30px;width: 50px;}
+    Rectangle {background: green; height: 30px;width: 100px;}
+    Rectangle {background: blue; height: 80px;width: 50px;}
+  }
+}

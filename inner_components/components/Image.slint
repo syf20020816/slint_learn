@@ -1,0 +1,18 @@
+export component MainWindow inherits Window {
+  height: 720px;
+  width: 1200px;
+  title: "Image!";
+  Image {
+    colorize:Colors.aliceblue;
+    source: @image-url("../../imgs/rust.png");
+    image-fit:fill;
+    image-rendering: smooth;
+    //设置旋转中心
+    rotation-origin-x: 23px;
+    rotation-origin-y: 56px;
+    rotation-angle: 30deg;
+    source-clip-height: 200;
+    source-clip-x: 100;
+    height: 300px;
+  }
+}

@@ -1,0 +1,44 @@
+export component MainWindow inherits Window {
+  height: 720px;
+  width: 1200px;
+  Rectangle {
+    background: red;
+    border-color: #ddd;
+    border-radius: 4px;
+    border-width: 2px;
+    height: 60px;
+    width: 120px;
+    //like overflow clip表示超出容器是否显示
+    clip: true;
+    Rectangle {
+      background: blue;
+      border-color: #ddd;
+      border-radius: 4px;
+      border-width: 2px;
+      height: 20px;
+      width: 30px;
+      x: 0px;
+      y: 10px;
+    }
+    Rectangle {
+      background: blue;
+      border-color: #ddd;
+      border-radius: 4px;
+      border-width: 2px;
+      height: 202px;
+      width: 300px;
+      x: 50px;
+      y: 10px;
+    }
+  }
+  Rectangle {
+    background: blue;
+    border-color: #ddd;
+    border-radius: 4px;
+    border-width: 2px;
+    height: 202px;
+    width: 300px;
+    x: 50px;
+    y: 10px;
+  }
+}

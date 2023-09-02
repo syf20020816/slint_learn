@@ -1,0 +1,19 @@
+import { Button } from "std-widgets.slint";
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 300px;
+  property <int> root-num <=> text1.num;
+  title: root-num;
+  text1:=Text {
+    x: 0px;
+    y: 0px;
+    property <int> num : 10;
+    text: "Hello" + num;
+  }
+  Button { 
+    text: "click here!";
+    clicked => {
+      parent.root-num +=2;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+export component MainWindow inherits Window {
+  height: 720px;
+  width: 1200px;
+  title: "Text Input!";
+  TextInput {
+    color: burlywood;
+    font-family: "Verdana";
+    font-size: 18px;
+    font-weight: 400;
+    horizontal-alignment: left;
+    input-type: text;
+    read-only: false;
+    selection-background-color: blue;
+    selection-foreground-color: red;
+    single-line: false;
+    wrap: word-wrap;
+    text: "default text";
+    text-cursor-width:8px;
+  }
+}

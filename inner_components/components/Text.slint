@@ -1,0 +1,21 @@
+export component MainWindow inherits Window {
+  height: 720px;
+  width: 1080px;
+  title: "Text!";
+  Text {
+    text: "I am a Text component";
+    height: 200px;
+    width: 100px;
+    //文字换行
+    wrap: word-wrap;
+    color: #fff;
+    font-size: 20px;
+    padding: 8px;
+    letter-spacing: 2px;
+    //横向对齐
+    horizontal-alignment:center;
+    //纵向对齐
+    vertical-alignment: center;
+    overflow: elide;
+  }  
+}

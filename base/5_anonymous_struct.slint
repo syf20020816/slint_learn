@@ -1,0 +1,8 @@
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 300px;
+  Text {
+    property <{name:string,age:int}> user:{name:"I am Mat",age:16};
+    text: user.name;
+  }
+}

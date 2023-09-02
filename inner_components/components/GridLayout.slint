@@ -1,0 +1,21 @@
+export component MainWindow inherits Dialog {
+  height: 200px;
+  width: 300px;
+  title: "GridLayout!";
+  GridLayout {
+    spacing: 10px;
+    padding: 4px;
+    //使用Row进行行声明
+    Row{
+      Rectangle { background: red; }
+      Rectangle { background: yellow;}
+      Rectangle { background: pink; }
+    }
+    Row{
+      Rectangle { background: white; colspan: 2; }
+      Rectangle { background: green; colspan: 1; col: 2;} 
+    }
+    Rectangle { background: violet; colspan: 3;row:3;}
+    Rectangle { background: orange; colspan: 3;row:2;}
+  }
+}

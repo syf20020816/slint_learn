@@ -1,0 +1,24 @@
+import { Button , StandardButton} from "std-widgets.slint";
+export component MainWindow inherits Dialog {
+  height: 720px;
+  width: 1200px;
+  title: "Dialog!";
+  icon: @image-url("../../imgs/rust.png");
+  //主元素
+  Text {
+    font-size: 30px;
+    text: "This is a dialog";
+  }
+  StandardButton { 
+    kind: ok;
+  }
+  StandardButton { 
+    kind: cancel;
+  }
+  Button {
+    width: 120px;
+    text: "info";
+    // 假扮成dialog-button元素
+    dialog-button-role: action;
+  }
+}

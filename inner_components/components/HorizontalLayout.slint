@@ -1,0 +1,41 @@
+export component MainWindow inherits Window {
+  height: 330px;
+  width: 400px;
+  title: "HorizontalLayout!";
+  HorizontalLayout {
+    spacing: 5px;
+    padding: 6px;
+    height: 100px;
+    width: 400px;
+    x: 0px;
+    y: 0px;
+    alignment: center;
+    Rectangle {background: red;height: 30px;width: 50px;}
+    Rectangle {background: green; height: 30px;width: 100px;}
+    Rectangle {background: blue; height: 80px;width: 50px;}
+  }
+  HorizontalLayout {
+    spacing: 5px;
+    padding: 6px;
+    height: 100px;
+    width: parent.width;
+    x: 0px;
+    y: 110px;
+    alignment: space-around;
+    Rectangle {background: red;height: 30px;width: 50px;}
+    Rectangle {background: green; height: 30px;width: 100px;}
+    Rectangle {background: blue; height: 80px;width: 50px;}
+  }
+  HorizontalLayout {
+    spacing: 5px;
+    padding: 6px;
+    height: 100px;
+    width: parent.width;
+    x: 0px;
+    y: 220px;
+    alignment: end;
+    Rectangle {background: red;height: 30px;width: 50px;}
+    Rectangle {background: green; height: 30px;width: 100px;}
+    Rectangle {background: blue; height: 80px;width: 50px;}
+  }
+}

@@ -1,0 +1,18 @@
+import { Button } from "std-widgets.slint";
+
+export component MainWindow inherits Window {
+  height: 720px;
+  width: 1200px;
+  title: "Button!";
+  Button { 
+    height: 66px;
+    width: 310px;
+    icon: @image-url("../../imgs/rust.png");
+    text: "I am a Button";
+    clicked => {
+      self.text = "Clicked!";
+      self.width = 360px;
+    }
+  }
+}
+

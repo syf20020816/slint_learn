@@ -1,0 +1,25 @@
+import { Button } from "std-widgets.slint";
+
+component MyButton inherits Button { 
+  text: "My Button";
+}
+
+export component MainWindow inherits Window {
+  MyButton{
+    height: 50px;
+    width: 50px;
+  }
+}
+
+// don't define here
+// component MyButton inherits Button { 
+//   text: "My Button";
+// }
+
+component OtherWindow inherits Window {
+  MyButton {
+    text: "Other Button";
+    height: 50px;
+    width: 250px;
+  }
+}

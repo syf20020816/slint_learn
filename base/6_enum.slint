@@ -1,0 +1,14 @@
+enum CompoentType{
+  System,
+  Define
+}
+
+
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 300px;
+  Text {
+    property <CompoentType> type : CompoentType.System ;
+    text: type == CompoentType.System?"Sys":"Define";
+  }
+}

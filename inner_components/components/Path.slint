@@ -1,0 +1,42 @@
+export component MainWindow inherits Window {
+  height: 200px;
+  width: 480px;
+  title: "Path!";
+  Path {
+    width: 100px;
+    height: 100px;
+    x: 50px;
+    y: 50px;
+    commands: "M 0 0 L 0 100 A 1 1 0 0 0 100 100 L 100 0 Z";
+    stroke: red;
+    stroke-width: 1px;
+  }
+  Path {
+    width: 100px;
+    height: 100px;
+    stroke: blue;
+    stroke-width: 1px;
+    x: 250px;
+    y: 50px;
+    MoveTo {
+      x: 0;
+      y: 0;
+    }
+    LineTo{
+      x: 0;
+      y: 100;
+    }
+    ArcTo {
+      radius-x: 3;
+      radius-y: 1;
+      x: 100;
+      y: 100;
+    }
+    LineTo {
+      x: 100;
+      y: 0;
+    }
+    Close {
+    }
+  }
+}

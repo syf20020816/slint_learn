@@ -1,0 +1,17 @@
+export component MainWindow inherits Dialog {
+  height: 200px;
+  width: 300px;
+  title: "Flickable!";
+  Flickable {
+      interactive: true;
+      viewport-height: 300px;
+      viewport-width: 400px;
+      viewport-x: 0px;
+      viewport-y: 0px;
+     Rectangle {
+      height: 200px;
+      width: 300px;
+      background: #792121;
+     }
+  }
+}
