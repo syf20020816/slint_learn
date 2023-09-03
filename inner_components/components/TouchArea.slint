@@ -1,0 +1,13 @@
+export component Example inherits Window {
+  width: 200px;
+  height: 100px;
+  background: area.pressed?red:blue;
+  area := TouchArea {
+      width: parent.width;
+      height: parent.height;
+      clicked => {
+          root.background = #777
+      }
+      
+  }
+}

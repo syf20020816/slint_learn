@@ -1,0 +1,18 @@
+component MyComponent inherits HorizontalLayout {
+  height: 300px;
+  width: 300px;
+  Rectangle {height: 50px;width: 50px;background: red;}
+  @children
+  Text {
+    text: "I am a Text";
+  }
+}
+
+export component MainWindow inherits Window {
+  width: 300px;
+  height: 300px;
+  
+  MyComponent {
+    Rectangle {height: 50px;width: 50px;background: blue;}
+  }
+}

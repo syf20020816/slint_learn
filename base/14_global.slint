@@ -1,0 +1,16 @@
+global MyColors {
+  in-out property <color> red : #e24949;
+  in-out property <color> green : #6de249;
+  in-out property <color> blue : #4989e2;
+}
+
+export component MainWindow inherits Window {
+  width: 300px;
+  height: 300px;
+  background: MyColors.green;
+  
+}
+
+export { 
+  MyColors
+}

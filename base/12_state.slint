@@ -1,0 +1,61 @@
+// export component MainWindow inherits Window {
+//   width: 300px;
+//   height: 300px;
+//   default-font-size: 24px;
+//   property <bool> active: true;
+//   label := Text { }
+//   area := TouchArea {
+//       clicked => {
+//           active = !active;
+//       }
+//   }
+  
+//   states [
+//     //声明active-click状态
+//       active-click when active && !area.has-hover: {
+//           label.text: "Active";
+//           root.background: red;
+//       }
+//       //声明active-hover状态
+//       active-hover when active && area.has-hover: {
+//           label.text: "Active Hover";
+//           root.background: green;
+//       }
+//       //声明clicked状态
+//       clicked when !active: {
+//           label.text: "Clicked";
+//           label.color:#000;
+//           root.background: #fff;
+//       }
+//   ]
+// }
+
+export component AnStates inherits Window {
+  width: 100px;
+  height: 100px;
+
+  text := Text { text: "hello"; }
+  in-out property<bool> pressed;
+  in-out property<bool> is-enabled;
+  TouchArea {
+    clicked => {
+      root.is-enabled = !root.is-enabled;
+      root.pressed = !root.pressed
+    }
+  }
+  states [
+      disabled when !root.is-enabled : {
+          background: gray; // same as root.background: gray;
+          text.color: white;
+          out {
+              animate * { duration: 800ms; }
+          }
+      }
+      down when pressed : {
+          background: blue;
+          in {
+              animate background { duration: 300ms; }
+          }
+      }
+  ]
+}

@@ -1,0 +1,27 @@
+export component MainWindow inherits Window {
+  width: 300px;
+  height: 300px;
+  text1:=Text {
+
+  }
+  text2:=Text{
+    y:100px;
+  }
+  FocusScope {
+    property <int> counter1 : 0;
+    property <int> counter2 : 0;
+    TextInput {}
+    key-pressed(e) => {
+      counter1+=1;
+      text1.text = "key pressed" + counter1;
+      accept
+    }
+    key-released(e) => {
+      counter2 += 1;
+      text2.text = "key released" + counter2;
+      accept
+    }
+  }
+  
+  
+}

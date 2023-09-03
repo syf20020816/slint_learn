@@ -1020,13 +1020,345 @@ export component MainWindow inherits Window {
 }
 ```
 
+## 🚩Flag
 
+当你看到这里时，说明大部分的基础知识已经掌握，请移步至高级组件进行学习直到下个Flag
+
+# 高级知识
+
+## 状态
+
+对于组件来说，可以声明多种状态，每种状态的判断规则不同，状态需要使用`states[]`进行声明，具体语法：
+
+```
+states[
+	状态1 when 条件{}
+	状态2 when 条件{}
+	...
+]
+```
+
+### example
+
+```
+export component MainWindow inherits Window {
+  width: 300px;
+  height: 300px;
+  default-font-size: 24px;
+  property <bool> active: true;
+  label := Text { }
+  area := TouchArea {
+      clicked => {
+          active = !active;
+      }
+  }
+  
+  states [
+    //声明active-click状态
+      active-click when active && !area.has-hover: {
+          label.text: "Active";
+          root.background: blue;
+      }
+      //声明active-hover状态
+      active-hover when active && area.has-hover: {
+          label.text: "Active Hover";
+          root.background: green;
+      }
+      //声明clicked状态
+      clicked when !active: {
+          label.text: "Clicked";
+          label.color:#000;
+          root.background: #fff;
+      }
+  ]
+}
+```
+
+![image-20230903192248570](E:\Rust\learn\slint_learn\README\imgs\image-20230903192248570.png)
+
+### 通过状态更改动画
+
+这里修改了一下官方的案例，给出两个状态disabled和down，通过使用out 和in关键字向往或内的对动画进行改变，其中*表示通配符（所有）
+
+```
+export component AnStates inherits Window {
+  width: 100px;
+  height: 100px;
+
+  text := Text { text: "hello"; }
+  in-out property<bool> pressed;
+  in-out property<bool> is-enabled;
+  TouchArea {
+    clicked => {
+      root.is-enabled = !root.is-enabled;
+      root.pressed = !root.pressed
+    }
+  }
+  states [
+      disabled when !root.is-enabled : {
+          background: gray; // same as root.background: gray;
+          text.color: white;
+          out {
+              animate * { duration: 800ms; }
+          }
+      }
+      down when pressed : {
+          background: blue;
+          in {
+              animate background { duration: 300ms; }
+          }
+      }
+  ]
+}
+```
+
+![image-20230903195333897](E:\Rust\learn\slint_learn\README\imgs\image-20230903195333897.png)
+
+## 插槽
+
+插槽的用处是可以在组件的某个部位插入所需要的子组件，在slint中使用`@children`进行指定插入位置
+
+```slint
+component MyComponent inherits HorizontalLayout {
+  height: 300px;
+  width: 300px;
+  Rectangle {height: 50px;width: 50px;background: red;}
+  @children
+  Text {
+    text: "I am a Text";
+  }
+}
+
+export component MainWindow inherits Window {
+  width: 300px;
+  height: 300px;
+  
+  MyComponent {
+    Rectangle {height: 50px;width: 50px;background: blue;}
+  }
+}
+```
+
+![image-20230903150148442](E:\Rust\learn\slint_learn\README\imgs\image-20230903150148442.png)
+
+## 模块的导入和导出
+
+导入和导出的作用是为了让组件或数据能够更好的复用，因此我们知道这几个关键字：
+
+1. global：全局变量
+2. export：导出
+3. import：导入
+4. from：文件地址
+
+### 全局变量
+
+要让一个属性或结构体或枚举在全局中都可以使用则需要使用`global`关键字进行定义，这样就能在整个项目中使用了
+
+```
+global MyColors {
+  in-out property <color> red : #e24949;
+  in-out property <color> green : #6de249;
+  in-out property <color> blue : #4989e2;
+}
+
+export component MainWindow inherits Window {
+  width: 300px;
+  height: 300px;
+  background: MyColors.green;
+  
+}
+
+export { 
+  MyColors
+}
+```
+
+### 导出
+
+导出的关键字`export`导出的方式有以下几种：
+
+1. `export{...}`	：导出内容，可进行选择
+2. `export component ...`：导出单个	
+3. `export * from "slint file address"`：导出所有
+
+#### 导出重命名
+
+导出时可以使用`as`关键字对导出项进行重命名
+
+```
+export {MyColors as DefaultColors};
+```
+
+### 导入
+
+使用`import`关键字联合`from`进行导入模块文件
+
+```
+ import {MyColors} from "./colors.slint";
+```
+
+### example
+
+```
+import { MyColors } from "./14_global.slint";
+
+
+component Example inherits Window {
+  height: 100px;
+  width: 100px;
+  background: MyColors.red;
+}
+```
 
 
 
 # 高级组件
 
+## 触碰事件区域 TouchArea 
+
+使用TouchArea来控制当它覆盖的区域被触摸或使用鼠标交互时会发生什么。当不是布局的一部分时，其宽度或高度默认为父元素的100%
+
+### example
+
+```
+export component Example inherits Window {
+  width: 200px;
+  height: 100px;
+  background: area.pressed?red:blue;
+  area := TouchArea {
+      width: parent.width;
+      height: parent.height;
+      clicked => {
+          root.background = #777
+      }
+      
+  }
+}
+
+```
+
+![image-20230903143604497](E:\Rust\learn\slint_learn\README\imgs\image-20230903143604497.png)
+
+### functions
+
+- clicked()：单击时调用，按下鼠标，然后释放此元素。
+- moved()：鼠标已被移动。只有在按下鼠标时才会调用。
+- pointer-event(PointerEvent)：按下或松开按钮时调用。
+
+#### PointerEvent
+
+此结构被生成并传递给TouchArea元素的pointer-event回调。包含字段：
+
+- kind（enum PointerEventKind）：事件的类型：以下之一
+- down：按下了按钮。
+- up：按钮被释放了。
+- cancel：另一个元素或窗户抓住了抓斗。这适用于所有按下的按钮，该button与此无关。
+- button（enum PointerEventButton）：按下或松开的按钮。left、right、middlenone。
+
+## FocusScope
+
+FocusScope暴露了回调以拦截关键事件。请注意，FocusScope只会在has-focus时调用它们。
+
+KeyEvent有一个文本属性，这是输入的密钥的字符。当按下不可打印的键时，该字符要么是控制字符，要么被映射到私有Unicode字符。这些不可打印的特殊字符的映射在Key命名空间中可用
+
+### example
+
+```
+export component MainWindow inherits Window {
+  width: 300px;
+  height: 300px;
+  text1:=Text {
+
+  }
+  text2:=Text{
+    y:100px;
+  }
+  FocusScope {
+    TextInput {}
+    key-pressed(e) => {
+      text1.text = "key pressed";
+      accept
+    }
+    key-released(e) => {
+      text2.text = "key released";
+      accept
+    }
+  }
+  
+  
+}
+```
+
+![image-20230903182503163](E:\Rust\learn\slint_learn\README\imgs\image-20230903182503163.png)
+
+### functions
+
+- key-pressed(KeyEvent) -> EventResult：按下键时调用，参数是KeyEvent结构。（只有输入KeyboardModifiers中4种键才调用）
+- key-released(KeyEvent) -> EventResult：在释放密钥时调用，参数是KeyEvent结构。（任意输入时都调用）
+   示例
+
+####  KeyEvent
+
+此结构被生成并传递给FocusScope元素的按键按下和释放回调。包含字段：
+
+- text（字符串）：键的字符串表示
+- modifiers（KeyboardModifiers）：事件期间按下的键盘修饰符
+
+#### EventResult
+
+此枚举描述了事件是否被事件处理程序拒绝或接受。
+
+- reject：事件被此事件处理程序拒绝，然后可能由父项处理
+- accept：该活动已被接受，将不再进一步处理
+
+#### KeyboardModifiers
+
+此结构作为KeyEvent的一部分生成，以指示在生成密钥事件期间按下了哪些修饰键。包含字段:
+
+- control（bool）：如果按下控制键，则true。在macOS上，这与命令键相对应。
+- alt（bool）：如果按下alt键，则true。
+- shift（bool）：如果按下Shift键，则true。
+- meta（bool）：如果在Windows上按下Windows键，或在macOS上按下控制键，则true。
+
+## 弹出框 PopupWindow 
+
+一种低级的弹出框，无法从外部访问弹出框中的组件
+
+通过`show`方法显示弹窗
+
+### example
+
+```
+import { Button } from "std-widgets.slint";
+export component MainWindow inherits Window {
+  width: 300px;
+  height: 300px;
+  popup := PopupWindow {
+    Text {
+      text: "I am Popup";
+    }
+    x: 20px;
+    y: 20px;
+    height: 50px;
+    width: 50px;
+  }
+
+  Button { 
+    text: "Show Popup";
+    clicked => {
+      popup.show()
+    }
+  } 
+}
+```
+
+### functions
+
+- show：显示弹窗
+
 ## Dialog 对话框
+
+一种对话框，你可能觉得它和弹出框很像，但对话框被限定了，对话框可以具有任意数量的`StandardButton`或其他具有`dialog-button-role`属性的按钮。
 
 ```
 import { Button , StandardButton} from "std-widgets.slint";
@@ -1055,7 +1387,9 @@ export component MainWindow inherits Dialog {
 }
 ```
 
-## 
+## 🚩Flag
+
+当你看到这里时，请移步到高级知识进行学习
 
 # 属性速查
 
@@ -1295,6 +1629,57 @@ drop-shadow-offset-x：2px;
 - end：对所有元素使用首选大小，将剩余空间放在第一个元素之前。
 - space-between：对所有元素使用首选大小，在元素之间均匀地分配剩余空间。
 - space-around：使用所有元素的首选大小，在第一个元素之前、最后一个元素之后和元素之间均匀分布剩余空间。
+
+## 触碰事件区域 TouchArea 
+
+| 属性                 | 说明（类型）                    | 示例 |
+| -------------------- | ------------------------------- | ---- |
+| has-hover            | 鼠标接触事件（out Bool）        |      |
+| mouse-cursor         | 鼠标悬停事件（TouchArea）       |      |
+| mouse-x，mouse-y     | 鼠标在TouchArea中的位置         |      |
+| pressed-x，pressed-y | 鼠标上次按下时在TouchArea的位置 |      |
+| pressed              | 鼠标长按事件（out bool）        |      |
+
+### MouseCursor
+
+这个枚举表示不同类型的鼠标光标。它是CSS中可用的鼠标光标的子集。有关详细信息和象形图，请参阅光标的MDN文档。根据后端和使用的操作系统，单向调整大小光标可能会被双向光标取代。
+
+- default：系统默认光标。
+- none：没有显示光标。
+- help：指示帮助信息的光标。
+- pointer：指向链接的指针。
+- progress：该程序很忙，但仍然可以与之互动。
+- wait：程序很忙。
+- crosshair：十字准线。
+- text：指示可选择文本的光标。
+- alias：正在创建别名或快捷方式。
+- copy：正在创建副本。
+- move：有些东西需要移动。
+- no-drop：有些东西不能在这里掉落。
+- not-allowed：不允许采取行动
+- grab：有些东西是可抓的。
+- grabbing：有东西被抓住了。
+- col-resize：表示一列可以水平调整大小。
+- row-resize：表示一行可以垂直调整大小。
+- n-resize：单向向向北调整。
+- e-resize：单向向东调整大小。
+- s-resize：单向向调整南尺寸。
+- w-resize：单向西调整大小。
+- ne-resize：单向调整东北方向的大小。
+- nw-resize：单向调整西北大小。
+- se-resize：东南方向调整大小。
+- sw-resize：单向调整西南大小。
+- ew-resize：东西方向双向调整大小。
+- ns-resize：双向调整大小。
+- nesw-resize：双向调整东北-西南的大小。
+- nwse-resize：双向调整西北-东南方向的大小。
+
+## 对话框 Dialog
+
+| 属性  | 说明（类型）       | 示例 |
+| ----- | ------------------ | ---- |
+| icon  | 窗口图标（Image）  |      |
+| title | 窗口标题（String） |      |
 
 # 可访问性 
 
