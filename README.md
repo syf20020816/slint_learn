@@ -883,7 +883,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903013751972](E:\Rust\learn\slint_learn\README\imgs\image-20230903013751972.png)
+![image-20230903013751972](.\README\imgs\image-20230903013751972.png)
 
 ### 回调
 
@@ -924,7 +924,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903021224754](E:\Rust\learn\slint_learn\README\imgs\image-20230903021224754.png)
+![image-20230903021224754](.\README\imgs\image-20230903021224754.png)
 
 #### 回调别名
 
@@ -987,7 +987,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903030107025](E:\Rust\learn\slint_learn\README\imgs\image-20230903030107025.png)
+![image-20230903030107025](.\README\imgs\image-20230903030107025.png)
 
 ## 动画
 
@@ -1067,7 +1067,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903192248570](E:\Rust\learn\slint_learn\README\imgs\image-20230903192248570.png)
+![image-20230903192248570](.\README\imgs\image-20230903192248570.png)
 
 ### 通过状态更改动画
 
@@ -1105,7 +1105,7 @@ export component AnStates inherits Window {
 }
 ```
 
-![image-20230903195333897](E:\Rust\learn\slint_learn\README\imgs\image-20230903195333897.png)
+![image-20230903195333897](.\README\imgs\image-20230903195333897.png)
 
 ## 插槽
 
@@ -1132,7 +1132,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903150148442](E:\Rust\learn\slint_learn\README\imgs\image-20230903150148442.png)
+![image-20230903150148442](.\README\imgs\image-20230903150148442.png)
 
 ## 模块的导入和导出
 
@@ -1232,7 +1232,7 @@ export component Example inherits Window {
 
 ```
 
-![image-20230903143604497](E:\Rust\learn\slint_learn\README\imgs\image-20230903143604497.png)
+![image-20230903143604497](.\README\imgs\image-20230903143604497.png)
 
 ### functions
 
@@ -1284,7 +1284,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903182503163](E:\Rust\learn\slint_learn\README\imgs\image-20230903182503163.png)
+![image-20230903182503163](.\README\imgs\image-20230903182503163.png)
 
 ### functions
 
