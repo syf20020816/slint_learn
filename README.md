@@ -28,6 +28,7 @@
 | length | Length.size |
 | relative-font-size | Length.rem |
 | Builtin Elements | 普通组件 |
+| Builtin Callbacks | 生命周期 |
 
 # Slint With VSCode
 
@@ -107,14 +108,6 @@ fn main() {
 # 普通组件
 
 组件需要使用`componment`进行声明使用`export`进行导出
-
-## 生命周期
-
-每一个组件都有一个init初始化生命周期，表示组件被初始化（渲染）时激活
-
-```
-init => {//init...}
-```
 
 ## 主窗体Window
 
@@ -1210,7 +1203,9 @@ component Example inherits Window {
 }
 ```
 
+## 🚩Flag
 
+当你看到这个标记时请移步至生命周期
 
 # 高级组件
 
@@ -1387,9 +1382,13 @@ export component MainWindow inherits Dialog {
 }
 ```
 
-## 🚩Flag
+## 生命周期
 
-当你看到这里时，请移步到高级知识进行学习
+每一个组件都有一个init初始化生命周期，表示组件被初始化（渲染）时激活
+
+```
+init => {//init...}
+```
 
 # 属性速查
 
@@ -1695,3 +1694,7 @@ drop-shadow-offset-x：2px;
 - accessible-value-minimum：最小值
 - accessible-value-step：当前值可以改变的最小增量
 - accessible-value：当前值。
+
+#  🚩Flag
+
+当你看到这个标记时说明你已经完成了slint的85%的学习，接下来的15%请查看系统自定义组件.md文档，该文档的发布日期为20230904
