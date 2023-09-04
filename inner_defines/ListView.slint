@@ -1,0 +1,17 @@
+
+import { ListView } from "std-widgets.slint";
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 200px;
+  ListView { 
+    for color in [
+      #000,
+      #ddd,
+      #ba5858
+    ]: Rectangle {
+      height: 30px;
+      width: 30px;
+      background: color;
+    }
+  }
+}

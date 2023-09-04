@@ -1,0 +1,21 @@
+import {StandardTableView} from "std-widgets.slint";
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 200px;
+  StandardTableView { 
+    height: root.height;
+    width: root.width;
+    columns: [
+      {title:"name"},
+      {title:"age"}
+    ];
+    rows: [
+      [
+          { text: "Mat" }, { text: 16 },
+      ],
+      [
+          { text: "Gary" }, { text: 21 },
+      ],
+    ];
+  }
+}

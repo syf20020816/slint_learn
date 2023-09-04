@@ -1,0 +1,14 @@
+import { StandardListView} from "std-widgets.slint";
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 200px;
+  StandardListView { 
+    current-item: 1;
+    model: [
+      {text:"1"},
+      {text:"2"},
+      {text:"3"},
+      {text:"4"}
+    ];
+  }
+}

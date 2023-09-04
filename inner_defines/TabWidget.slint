@@ -1,0 +1,16 @@
+import { TabWidget, TabWidgetImpl} from "std-widgets.slint";
+export component MainWindow inherits Window {
+  height: 200px;
+  width: 200px;
+  TabWidget { 
+    current-index: 1;
+    Tab{
+      title: "1";
+      Text {height: 100px;width: 200px;text: "1";}
+    }
+    Tab{
+      title: "2";
+      Text {height: 100px;width: 200px;text: "2";}
+    }
+  }
+}

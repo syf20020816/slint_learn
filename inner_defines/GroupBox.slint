@@ -1,0 +1,20 @@
+import { ComboBox, GroupBox} from "std-widgets.slint";
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 200px;
+  GroupBox { 
+    title: "请选择";
+    VerticalLayout {
+      spacing: 10px;
+      ComboBox { 
+        current-index: 2;
+        current-value: "坤坤";
+        model: ["篮球","唱","跳","Rap"];
+      }
+      ComboBox { 
+        current-index: 1;
+        model: ["篮球","唱","跳","Rap"];
+      }
+    }
+  }
+}

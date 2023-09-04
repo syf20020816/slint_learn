@@ -1,0 +1,33 @@
+
+import {ScrollView} from "std-widgets.slint";
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 200px;
+  ScrollView { 
+    height: 300px;
+    width: 200px;
+    viewport-width: 300px;
+    viewport-height: 300px;
+    Rectangle {
+      x:0px;
+      y:0;
+      height: 30px;
+      width: 30px;
+      background: red;
+    }
+    Rectangle {
+      x:100px;
+      y: 30px;
+      height: 30px;
+      width: 30px;
+      background: green;
+    }
+    Rectangle {
+      x:100px;
+      y:100px;
+      height: 30px;
+      width: 30px;
+      background: blue;
+    }
+  }
+}

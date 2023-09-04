@@ -1,0 +1,11 @@
+import { StandardButton } from "std-widgets.slint";
+
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 200px;
+  for kind[index] in [StandardButtonKind.abort,StandardButtonKind.apply,StandardButtonKind.cancel,StandardButtonKind.close]:StandardButton  {
+    kind: kind;
+    y:self.width * (index+1);
+  }
+  
+}

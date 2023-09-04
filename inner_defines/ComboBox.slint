@@ -1,0 +1,10 @@
+import { ComboBox} from "std-widgets.slint";
+export component MainWindow inherits Window {
+  height: 300px;
+  width: 200px;
+  ComboBox { 
+    current-index: 2;
+    current-value: "坤坤";
+    model: ["篮球","唱","跳","Rap"];
+  }
+}

@@ -1,0 +1,13 @@
+
+import { Button } from "std-widgets.slint";
+export component MainWindow inherits Window {
+  height: 200px;
+  width: 200px;
+  Button { 
+    text: "primary btn";
+    primary: true;
+    clicked => {
+      self.text = "clicked"
+    }
+  }
+}
