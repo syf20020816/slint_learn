@@ -694,7 +694,7 @@ export component MainWindow inherits Window {
 
 - **`mix(other: brush, factor: float) -> brush`**
 
-  返回一个新颜色，它是此颜色和`other`，有比例 因子由\一个因子给出（该因子将被限制在`0.0` 和`1.0`）.
+  返回一个新颜色，它是此颜色和`other`，有比例 因子由一个因子给出（该因子将被限制在`0.0` 和`1.0`）.
 
 - **`transparentize(factor: float) -> brush`**
 
@@ -717,7 +717,7 @@ export component MainWindow inherits Window {
 
 ```
 //语法
-@linear-gradient(circle, 颜色 占比, 颜色 占比, ...);
+@radial-gradient(circle, 颜色 占比, 颜色 占比, ...);
 
 @radial-gradient(circle, #f00 0%, #0f0 50%, #00f 100%);
 ```
@@ -1107,7 +1107,7 @@ export component AnStates inherits Window {
 
 ![image-20230903195333897](.\README\imgs\image-20230903195333897.png)
 
-## 插槽
+## 👎插槽
 
 插槽的用处是可以在组件的某个部位插入所需要的子组件，在slint中使用`@children`进行指定插入位置
 
@@ -1240,15 +1240,32 @@ export component Example inherits Window {
 - moved()：鼠标已被移动。只有在按下鼠标时才会调用。
 - pointer-event(PointerEvent)：按下或松开按钮时调用。
 
-#### PointerEvent
+#### `PointerEvent`
 
-此结构被生成并传递给TouchArea元素的pointer-event回调。包含字段：
+表示指针由窗口系统发送的事件。 生成此结构并将其传递给`pointer-event` 的回调`TouchArea` 元素
 
-- kind（enum PointerEventKind）：事件的类型：以下之一
-- down：按下了按钮。
-- up：按钮被释放了。
-- cancel：另一个元素或窗户抓住了抓斗。这适用于所有按下的按钮，该button与此无关。
-- button（enum PointerEventButton）：按下或松开的按钮。left、right、middlenone。
+- **`button`** （*PointerEventButton*）：按下或释放的按钮
+- **`kind`** （**PointerEventKind**）：按钮类型
+- **`modifiers`** （*KeyboardModifiers*）：事件期间按下的键盘修饰符
+
+#### `PointerEventButton`
+
+此枚举描述指针事件的不同类型的按钮， 通常在鼠标
+
+- **`other`**：一个不是左、右或中间的按钮。例如 这用于具有许多按钮的鼠标上的第四个按钮。
+- **`left`**：左按钮。
+- **`right`**正确的按钮。
+- **`middle`**：中心按钮。
+
+#### `PointerEventKind`
+
+枚举报告发生在`PointerEventButton` 
+
+- **`cancel`**：操作已取消。
+- **`down`**：按钮被按下了。
+- **`up`**：按钮被释放。
+
+
 
 ## FocusScope
 
@@ -1269,17 +1286,20 @@ export component MainWindow inherits Window {
     y:100px;
   }
   FocusScope {
+    property <int> press:0;
+    property <int> release:0;
     TextInput {}
     key-pressed(e) => {
-      text1.text = "key pressed";
+      press+=1;
+      text1.text = "key pressed" + press;
       accept
     }
     key-released(e) => {
-      text2.text = "key released";
+      release+=1;
+      text2.text = "key released" +release;
       accept
     }
   }
-  
   
 }
 ```
@@ -1634,7 +1654,7 @@ drop-shadow-offset-x：2px;
 | 属性                 | 说明（类型）                    | 示例 |
 | -------------------- | ------------------------------- | ---- |
 | has-hover            | 鼠标接触事件（out Bool）        |      |
-| mouse-cursor         | 鼠标悬停事件（TouchArea）       |      |
+| mouse-cursor         | 鼠标悬停事件（MouseCursor）     |      |
 | mouse-x，mouse-y     | 鼠标在TouchArea中的位置         |      |
 | pressed-x，pressed-y | 鼠标上次按下时在TouchArea的位置 |      |
 | pressed              | 鼠标长按事件（out bool）        |      |
