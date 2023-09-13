@@ -1,0 +1,16 @@
+import { KTop } from "./ktop.slint";
+import { KBottom } from "./kbottom.slint";
+
+export component Keyboard inherits Rectangle{
+  height: 100%;
+  width: 100%;
+  
+  background: #bb6124;
+ 
+    VerticalLayout {
+      padding-left: 6px;
+      padding-right: 6px;
+      KTop {}
+      KBottom {}
+    }
+}

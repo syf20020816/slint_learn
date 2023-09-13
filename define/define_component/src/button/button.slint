@@ -1,0 +1,39 @@
+import { THEMES } from "../../themes/index.slint";
+
+export component Button inherits Rectangle {
+    background: THEMES.theme-color;
+    height: count-hw(inner.height , THEMES.padding.top-bottom);
+    width: count-hw(inner.width , THEMES.padding.left-right);
+    border-radius: 6px;
+    
+    pure function count-hw(hw:length,p:length)->length {
+      hw + p * 2
+    }
+    in property <string> text : "button";
+    callback clicked();
+    init => {
+      self.padding-top =  THEMES.padding.top-bottom;
+      self.padding-bottom = THEMES.padding.top-bottom;
+      self.padding-left =  THEMES.padding.left-right;
+      self.padding-right =  THEMES.padding.left-right;
+    }
+    states [
+        hover when area.has-hover: {
+          root.background : THEMES.theme-hover;
+        }
+    ]
+    animate background {
+         duration: 300ms;
+         easing: ease-in;
+    }
+    area:=TouchArea {
+      mouse-cursor:pointer;
+      clicked => {
+        root.clicked();
+      }
+      inner:=Text {
+        text: root.text;
+        font-size: THEMES.font-size;
+      }
+    }
+}

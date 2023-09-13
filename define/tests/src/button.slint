@@ -1,0 +1,14 @@
+import { DButton } from "../../define_component/index.slint";
+component TestButton inherits Window {
+    height: 400px;
+    width: 400px;
+    DButton {
+      text:"hello";
+      clicked=>{
+        self.text  = "world";
+      }
+    }
+    DButton {
+      text:"你好";
+    }
+}

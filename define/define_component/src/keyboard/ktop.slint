@@ -1,0 +1,52 @@
+
+export component KTop inherits Rectangle{
+  height: 46px;
+  width: 100%;
+  
+  private property <length> font-size : 16px;
+  private property <[
+    [string]
+  ]> f-keys:[
+    ["F1","F2","F3","F4"],
+    ["F5","F6","F7","F8"],
+    ["F9","F10","F11","F12"]
+  ];
+  HorizontalLayout {
+    height: root.height;
+    width: root.width;
+    alignment: space-between;
+    esc:=Rectangle{
+      height: root.height;
+      width: 30px;
+      
+      Rectangle {
+        height: 30px;
+        width: 30px;
+        background: #FA7319;
+        esc-txt:=Text {
+          color: #000;
+          text: "Esc";
+          font-size: root.font-size;
+        }
+      }
+    }
+    for f-key in f-keys: Rectangle {
+      height: root.height;
+      width: f-key.length * 30px + 30px;
+        HorizontalLayout {
+          height: 30px;
+          spacing: 10px;
+          for k in f-key: Rectangle {
+            height: 30px;
+            width: 30px;
+            background: #FA7319;
+              Text {
+                text: k;
+                color: #000;
+                font-size: root.font-size;
+              }
+          }
+        }
+    }
+  }
+}

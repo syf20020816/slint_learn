@@ -1,0 +1,216 @@
+import { KeyItem } from "./item.slint";
+component Left inherits Rectangle{
+  height:174px;
+  background: green;
+  width: 300px;
+  GridLayout {
+    spacing: 6px;
+    Row{
+      KeyItem {
+        colspan: 1;
+      }
+      KeyItem {
+        colspan: 1;
+      }
+      KeyItem {
+        colspan: 1;
+      }
+      Rectangle {
+        background: #FA7319;
+        colspan: 1;
+      }
+      Rectangle {
+        background: #FA7319;
+        colspan: 1;
+      }
+      Rectangle {
+        background: #FA7319;
+        colspan: 1;
+      }
+    }
+    Row{
+      KeyItem {
+        col: 0;
+        colspan: 1;
+      }
+      Rectangle {
+        background: red;
+        col: 1;
+        colspan: 2;
+      }
+      Rectangle {
+        col: 3;
+        background: #FA7319;
+        colspan: 1;
+      }
+      Rectangle {
+        background: #FA7319;
+        colspan: 1;
+      }
+      Rectangle {
+        background: #FA7319;
+        colspan: 1;
+      }
+    }
+    Row{
+      KeyItem {
+        colspan: 1;
+      }
+      Rectangle {
+        background: red;
+        colspan: 4;
+        col: 1;
+      }
+      Rectangle {
+        background: #FA7319;
+        col: 5;
+        colspan: 1;
+      }
+    }
+  }
+}
+
+component Mid inherits Rectangle{
+  
+  width: 90px;
+  height: 174px;
+  VerticalLayout {
+    spacing: 42px;
+    Rectangle {
+      height: 66px;
+      width: 90px;
+      background: #FA7319;
+    }
+    Rectangle {
+      height: 66px;
+      width: 90px;
+      
+      GridLayout {
+        spacing: 6px;
+        Row{
+          KeyItem {
+            background: #BB6124;
+            disabled: true;
+          }
+          KeyItem {
+            text: "▲";
+            clicked => {
+              debug("up")
+            }
+          }
+          KeyItem {
+            background: #BB6124;
+            disabled: true;
+          }
+        }
+        Row{
+          KeyItem {
+            text: "◀";
+          }
+          KeyItem {
+            text: "▼";
+          }
+          KeyItem {
+            text: "▶";
+          }
+        }
+      }
+    }
+  }
+}
+
+component Right inherits Rectangle{
+  width: 138px;
+  height: 174px;
+  private property <[string]> top:["Num","/","*","-"];
+  VerticalLayout {
+    height: 100%;
+    width: 100%;
+    spacing: 6px;
+    Rectangle {
+      height: 30px;
+      HorizontalLayout {
+        height: 30px;
+        width: 100%;
+        spacing: 6px;
+        for item in top: KeyItem{
+          text:item;
+        }
+      }
+    }
+    Rectangle {
+      height: 144px;
+      width: 138px;
+      HorizontalLayout {
+        spacing: 6px;
+        alignment: space-between;
+        Rectangle {
+          width: parent.width - 36px;
+          height: 100%;
+          VerticalLayout {
+            spacing: 6px;
+            Rectangle {
+              GridLayout {
+                spacing: 6px;
+                Row{
+                  KeyItem {text: 9;}
+                  KeyItem {text: 8;}
+                  KeyItem {text: 7;}
+                }
+                Row{
+                  KeyItem {text: 6;}
+                  KeyItem {text: 5;}
+                  KeyItem {text: 4;}
+                }
+                Row{
+                  KeyItem {text: 3;}
+                  KeyItem {text: 2;}
+                  KeyItem {text: 1;}
+                }
+              }
+            }
+            Rectangle {
+              height: 30px;
+              HorizontalLayout {
+                spacing: 6px;
+                KeyItem {
+                  text: 0;
+                  width: 66px;
+                }
+                KeyItem {
+                  text: ".";
+                }
+              }
+            }
+          }
+        }
+        Rectangle {
+          width: 30px;
+          VerticalLayout {
+            spacing: 6px;
+            KeyItem {
+              text: "+";
+              height: 66px;
+            }
+            KeyItem {
+              text: "Ent";
+              height: 66px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+export component KBottom inherits Rectangle {
+  height: 300px - 46px;
+  width: 100%;
+  
+  HorizontalLayout {
+    alignment: space-between;
+    Left {}
+    Mid {}
+    Right {}
+  }
+}

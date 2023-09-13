@@ -1,0 +1,23 @@
+export component KeyItem inherits Rectangle {
+  background: #FA7319;
+  width: 30px;
+  height: 30px;
+  in property <string> text;
+  in property <bool> disabled:false;
+  callback clicked();
+  TouchArea {
+    mouse-cursor: disabled?default:pointer;
+    z: 10;
+    clicked => {
+     if(!disabled){
+       root.clicked()
+     }
+    } 
+  }
+  Text {
+    z: 9;
+    text: root.text;
+    color: #000;
+    font-size: 16px;
+  }
+}

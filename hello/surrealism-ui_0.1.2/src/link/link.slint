@@ -1,0 +1,54 @@
+/**
+* ============================================
+* @author:syf20020816@outlook.com
+* @since:20230910
+* @version:0.1.0
+* @type:interface
+* @description:
+* # SURLink
+* SURLink is commonly used to represent text connections or sharing
+* ## properties
+* - in property <image> icon : share icon you can use whatever you want
+* - in property <bool> funny : Easter egg just funny
+* ## callbacks
+* - callback clicked() :  run if you click share icon
+* ============================================
+*/
+
+import { SURText } from "../text/index.slint";
+import { SURCard } from "../card/index.slint";
+import {Shadows} from "../../themes/index.slint";
+import { SURIcon } from "../icon/index.slint";
+import { IconSources } from "../../themes/index.slint";
+export component Link inherits SURText{
+  callback clicked();
+  in property <image> icon : IconSources.icons.Share;
+  in property <bool> funny : false;
+    SURCard {
+      y: root.height;
+      height: 1px;
+      width: root.width;
+      theme: root.theme;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      border: root.funny? Circle-None: None;
+    }
+  Rectangle {
+    x: root.width; 
+    height: link-icon.width;
+    width: link-icon.width + self.padding-left;
+    padding-left: 2px;
+    link-icon:=SURIcon {
+      x: 2px;
+      icon: root.icon;
+      theme: root.theme;
+      height: root.font-size / 1.4;
+      width: root.font-size / 1.4;
+      clicked => {
+        root.clicked()
+      }
+    }
+  }
+}
