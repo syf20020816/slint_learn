@@ -3,6 +3,11 @@
 - author：syf20020816@outlook.com
 - updateDate：20230902
 - github：https://github.com/syf20020816/slint_learn
+- video ：
+  - 入门：https://www.bilibili.com/video/BV1r14y1k7T5/?spm_id_from=333.999.0.0&vd_source=9c2ae08297163e79152407c969f04717
+  - 进阶：https://www.bilibili.com/video/BV1e14y1r7YV/?spm_id_from=333.999.0.0&vd_source=9c2ae08297163e79152407c969f04717
+  - 项目：https://www.bilibili.com/video/BV14u411g7Xa/?spm_id_from=333.999.0.0&vd_source=9c2ae08297163e79152407c969f04717
+
 
 # 如何学习本文档
 
