@@ -1,0 +1,347 @@
+import {ThemeColor} from "./src/color/color.slint";
+import {ThemeFont} from "./src/font/font.slint";
+import {ThemePadding,ThemeBorder,PaddingSize,PaddingItem,Borders,BorderItem} from "./src/padding/padding.slint";
+import { ThemeSpace } from "./src/spacing/spacing.slint";
+import {Size,SizeStruct} from "./src/common.slint";
+import { IconSources } from "../src/icon/dev.slint";
+import { Shadows } from "./src/shadow/shadow.slint";
+export { Size,PaddingSize,PaddingItem,Shadows,Borders,BorderItem,IconSources}
+
+export enum ResType{
+  Primary,
+  Success,
+  Info,
+  Error,
+  Warning,
+  Help
+}
+
+export enum Themes{
+  Light,
+  Primary,
+  Success,
+  Info,
+  Warning,
+  Error,
+  Dark
+}
+
+export global ROOT_STYLES {
+  out property <ThemeFont> sur-font:{
+    font-family:"Verdana",
+    font-weight:400,
+    font-size:16px,
+    font-italic:false,
+    letter-spacing:0,
+    tag-size:12px
+  };
+  out property <brush> font-light : #ffffff;
+  out property <brush> font-black : #000;
+  in-out property <ThemeColor> sur-theme-colors : {
+    light:{name:"light",weakest:#F6F6F6,weaker:#E0E0E0,normal:#FFFFFF,deeper:#F5F5F5,deepest:#C8C8C6,font:#212121,opacity:#E0E0E088},
+    primary:{name:"primary",weakest:#88D0EC,weaker:#6CB8F7,normal:#3AA1F5,deeper:#1891F3,deepest:#0B86F1,font:#e5ffff,opacity:#3AA1F588},
+    success:{name:"success",weakest:#8FCEC4,weaker:#61BF84,normal:#38A762,deeper:#21964A,deepest:#118A3D,font:#e5fffb,opacity:#38A76288},
+    info:{name:"info",weakest:#F6F6F6,weaker:#eaeaea,normal:#E0E0E0,deeper:#D2D2D2,deepest:#BDBDBD,font:#484848,opacity:#E0E0E088},
+    warning:{name:"warning",weakest:#ffd5bd,weaker:#FCBD99,normal:#F9A677,deeper:#F9955C,deepest:#F8894A,font:#fff4ec,opacity:#F9A67788},
+    error:{name:"error",weakest:#e9a9a7,weaker:#F294B3,normal:#EE6F9A,deeper:#EB5889,deepest:#EA467E,font:#ffe5e4,opacity:#EE6F9A88},
+    dark:{name:"dark",weakest:#707070,weaker:#616161,normal:#424242,deeper:#242424,deepest:#000000,font:#BDBDBD,opacity:#42424288}
+  };
+  in-out property <brush> radio-active : #FF5722;
+  out property <ThemePadding> sur-padding : {
+    none:{top-bottom:0px,left-right:0px,same:0px},
+    icon:{top-bottom:2px,left-right:2px,same:2px},
+    tip:{top-bottom:6px,left-right:10px,same:4px},
+    small: {top-bottom:8px,left-right:12px,same:8px},
+    normal:{top-bottom:12px,left-right:16px,same:12px},
+    large:{top-bottom:16px,left-right:24px,same:16px}
+  };
+  
+  out property <ThemeBorder> sur-border:{
+    none:{border-radius:0px,border-width:0px},
+    small:{border-radius:2px,border-width:1px},
+    normal:{border-radius:4px,border-width:2px},
+    large:{border-radius:8px,border-width:4px},
+    x-large:{border-radius:12px,border-width:6px},
+    circle:{
+      none:{border-radius:1000in,border-width:0px},
+      small:{border-radius:1000in,border-width:1px},
+      normal:{border-radius:1000in,border-width:2px},
+      large:{border-radius:1000in,border-width:4px},
+      x-large:{border-radius:1000in,border-width:6px},
+    }
+  };
+  out property <{
+    low:{shadow1:percent,shadow2:percent},
+    high:{shadow1:percent,shadow2:percent}
+  }> sur-opacity : {
+    low:{shadow1:28%,shadow2:14%},
+    high:{shadow1:28%,shadow2:20%}
+  };
+  out property <duration> sur-an-duration :200ms;
+  out property <easing> sur-an-easing : ease-in-out;
+  in-out property <SizeStruct> sur-size:{
+    small:12px,
+    normal:16px,
+    large:24px,
+    largest:48px
+  };
+  out property <length> scroll-bar-width : 14px;
+  out property <{
+    low1:{x:length,y:length,blur:length},
+    low2:{x:length,y:length,blur:length},
+    low3:{x:length,y:length,blur:length},
+    high1:{x:length,y:length,blur:length},
+    high2:{x:length,y:length,blur:length},
+    high-empty:{x:length,y:length,blur:length}
+  }> sur-shadow:{
+    low1:{x:0,y:1px,blur:2px},
+    low2:{x:0,y:2px,blur:4px},
+    low3:{x:0,y:4px,blur:8px},
+    high1:{x:0,y:4px,blur:14px},
+    high2:{x:0,y:8px,blur:28px},
+    high-empty:{x:0,y:0px,blur:28px}
+  };
+  out property <ThemeSpace> sur-spacing:{
+    none:0,
+    len20:2px,
+    len40:4px,
+    len60:6px,
+    len80:8px,
+    len120:12px,
+    len160:16px,
+    len200:20px,
+    len240:24px,
+    len280:28px,
+    len320:32px,
+    len360:36px,
+    len400:40px,
+    len440:44px,
+    len480:48px,
+    len520:52px,
+    len560:56px,
+  };
+  // 计算组件高度
+  pure public function count-height(h:length,padding:length)->length {
+      return h + padding * 2;
+  }
+  // 计算组件宽度
+  pure public function count-width(w:length,padding:length)->length {
+    return w + padding * 2;
+  }
+  pure public function get-padding(size:PaddingSize)->PaddingItem {
+      if(size==PaddingSize.Small){
+        ROOT-STYLES.sur-padding.small
+      }else if(size==PaddingSize.Normal){
+        ROOT-STYLES.sur-padding.normal
+      }else if(size==PaddingSize.Large){
+        ROOT-STYLES.sur-padding.large
+      }else if(size==PaddingSize.None){
+        ROOT-STYLES.sur-padding.none
+      }else if(size==PaddingSize.Tip){
+        ROOT-STYLES.sur-padding.tip
+      }else{
+        ROOT-STYLES.sur-padding.tip
+      }
+  }
+  pure public function get-shadow-x(shadow:Shadows)->length {
+      if(shadow==Shadows.Low1){
+        ROOT-STYLES.sur-shadow.low1.x
+      }else if(shadow==Shadows.Low2){
+        ROOT-STYLES.sur-shadow.low2.x
+      }else if(shadow==Shadows.Low3){
+        ROOT-STYLES.sur-shadow.low3.x
+      }else if(shadow==Shadows.High1){
+        ROOT-STYLES.sur-shadow.high1.x
+      }else if(shadow==Shadows.High2){
+        ROOT-STYLES.sur-shadow.high2.x
+      }else {
+        ROOT-STYLES.sur-shadow.high-empty.x
+      }
+  }
+  pure public function get-shadow-y(shadow:Shadows)->length {
+    if(shadow==Shadows.Low1){
+      ROOT-STYLES.sur-shadow.low1.y
+    }else if(shadow==Shadows.Low2){
+      ROOT-STYLES.sur-shadow.low2.y
+    }else if(shadow==Shadows.Low3){
+      ROOT-STYLES.sur-shadow.low3.y
+    }else if(shadow==Shadows.High1){
+      ROOT-STYLES.sur-shadow.high1.y
+    }else if(shadow==Shadows.High2){
+      ROOT-STYLES.sur-shadow.high2.y
+    }else {
+      ROOT-STYLES.sur-shadow.high-empty.y
+    }
+  }
+  pure public function get-shadow-blur(shadow:Shadows)->length {
+    if(shadow==Shadows.Low1){
+      ROOT-STYLES.sur-shadow.low1.blur
+    }else if(shadow==Shadows.Low2){
+      ROOT-STYLES.sur-shadow.low2.blur
+    }else if(shadow==Shadows.Low3){
+      ROOT-STYLES.sur-shadow.low3.blur
+    }else if(shadow==Shadows.High1){
+      ROOT-STYLES.sur-shadow.high1.blur
+    }else if(shadow==Shadows.High2){
+      ROOT-STYLES.sur-shadow.high2.blur
+    }else {
+      ROOT-STYLES.sur-shadow.high-empty.blur
+    }
+  }
+  pure public function get-border(border:Borders)->BorderItem {
+      if(border==Borders.Small){
+        ROOT-STYLES.sur-border.small
+      }else if(border==Borders.Normal){
+        ROOT-STYLES.sur-border.normal
+      }else if(border==Borders.Large){
+        ROOT-STYLES.sur-border.large
+      }else if(border==Borders.X-Large){
+        ROOT-STYLES.sur-border.x-large
+      }else if(border==Borders.Circle-None){
+        ROOT-STYLES.sur-border.circle.none
+      }else if(border==Borders.Circle-Small){
+        ROOT-STYLES.sur-border.circle.small
+      }else if(border==Borders.Circle-Normal){
+        ROOT-STYLES.sur-border.circle.normal
+      }else if(border==Borders.Circle-Large){
+        ROOT-STYLES.sur-border.circle.large
+      }else if(border==Borders.Circle-X-Large){
+        ROOT-STYLES.sur-border.circle.x-large
+      }else{
+        ROOT-STYLES.sur-border.none
+      }
+  }
+  pure public function get-space(w:length) -> length{
+      if(w>=560px){
+        ROOT-STYLES.sur-spacing.len560
+      }else if(w>=520px){
+        ROOT-STYLES.sur-spacing.len520
+      }else if(w>=480px){
+        ROOT-STYLES.sur-spacing.len480
+      }else if(w>=440px){
+        ROOT-STYLES.sur-spacing.len440
+      }else if(w>=400px){
+        ROOT-STYLES.sur-spacing.len400
+      }else if(w>=360px){
+        ROOT-STYLES.sur-spacing.len360
+      }else if(w>=320px){
+        ROOT-STYLES.sur-spacing.len320
+      }else if(w>=280px){
+        ROOT-STYLES.sur-spacing.len280
+      }else if(w>=240px){
+        ROOT-STYLES.sur-spacing.len240
+      }else if(w>=200px){
+        ROOT-STYLES.sur-spacing.len200
+      }else if(w>=160px){
+        ROOT-STYLES.sur-spacing.len160
+      }else if(w>=120px){
+        ROOT-STYLES.sur-spacing.len120
+      }else if(w>=80px){
+        ROOT-STYLES.sur-spacing.len80
+      }else if(w>=60px){
+        ROOT-STYLES.sur-spacing.len60
+      }else if(w>=40px){
+        ROOT-STYLES.sur-spacing.len40
+      }else if(w>=20px){
+        ROOT-STYLES.sur-spacing.len20
+      }else{
+        ROOT-STYLES.sur-spacing.none
+      }
+  }
+  pure public function deeper(theme:Themes,color:brush)->brush {
+      if(theme==Themes.Light){
+        ROOT-STYLES.light-deeper(color)
+      }else if(theme==Themes.Primary){
+        ROOT-STYLES.primary-deeper(color)
+      }else if(theme==Themes.Success){
+        ROOT-STYLES.success-deeper(color)
+      }else if(theme==Themes.Info){
+        ROOT-STYLES.info-deeper(color)
+      }else if(theme==Themes.Warning){
+        ROOT-STYLES.warning-deeper(color)
+      }else if(theme==Themes.Error){
+        ROOT-STYLES.error-deeper(color)
+      }else{
+        ROOT-STYLES.dark-deeper(color)
+      }
+  }
+  pure function light-deeper(color:brush)->brush {
+    if(color==ROOT-STYLES.sur-theme-colors.light.weakest){
+      ROOT-STYLES.sur-theme-colors.light.weaker
+    }else if(color==ROOT-STYLES.sur-theme-colors.light.weaker){
+      ROOT-STYLES.sur-theme-colors.light.normal
+    }else if(color==ROOT-STYLES.sur-theme-colors.light.normal){
+      ROOT-STYLES.sur-theme-colors.light.deeper
+    }else{
+      ROOT-STYLES.sur-theme-colors.light.deepest
+    }
+  }
+  pure function primary-deeper(color:brush)->brush {
+    if(color==ROOT-STYLES.sur-theme-colors.primary.weakest){
+      ROOT-STYLES.sur-theme-colors.primary.weaker
+    }else if(color==ROOT-STYLES.sur-theme-colors.primary.weaker){
+      ROOT-STYLES.sur-theme-colors.primary.normal
+    }else if(color==ROOT-STYLES.sur-theme-colors.primary.normal){
+      ROOT-STYLES.sur-theme-colors.primary.deeper
+    }else{
+      ROOT-STYLES.sur-theme-colors.primary.deepest
+    }
+  }
+  pure function success-deeper(color:brush)->brush {
+    if(color==ROOT-STYLES.sur-theme-colors.success.weakest){
+      ROOT-STYLES.sur-theme-colors.success.weaker
+    }else if(color==ROOT-STYLES.sur-theme-colors.success.weaker){
+      ROOT-STYLES.sur-theme-colors.success.normal
+    }else if(color==ROOT-STYLES.sur-theme-colors.success.normal){
+      ROOT-STYLES.sur-theme-colors.success.deeper
+    }else{
+      ROOT-STYLES.sur-theme-colors.success.deepest
+    }
+  }
+  pure function info-deeper(color:brush)->brush {
+    if(color==ROOT-STYLES.sur-theme-colors.info.weakest){
+      ROOT-STYLES.sur-theme-colors.info.weaker
+    }else if(color==ROOT-STYLES.sur-theme-colors.info.weaker){
+      ROOT-STYLES.sur-theme-colors.info.normal
+    }else if(color==ROOT-STYLES.sur-theme-colors.info.normal){
+      ROOT-STYLES.sur-theme-colors.info.deeper
+    }else{
+      ROOT-STYLES.sur-theme-colors.info.deepest
+    }
+  }
+  pure function warning-deeper(color:brush)->brush {
+    if(color==ROOT-STYLES.sur-theme-colors.warning.weakest){
+      ROOT-STYLES.sur-theme-colors.warning.weaker
+    }else if(color==ROOT-STYLES.sur-theme-colors.warning.weaker){
+      ROOT-STYLES.sur-theme-colors.warning.normal
+    }else if(color==ROOT-STYLES.sur-theme-colors.warning.normal){
+      ROOT-STYLES.sur-theme-colors.warning.deeper
+    }else{
+      ROOT-STYLES.sur-theme-colors.warning.deepest
+    }
+  }
+  pure function error-deeper(color:brush)->brush {
+    if(color==ROOT-STYLES.sur-theme-colors.error.weakest){
+      ROOT-STYLES.sur-theme-colors.error.weaker
+    }else if(color==ROOT-STYLES.sur-theme-colors.error.weaker){
+      ROOT-STYLES.sur-theme-colors.error.normal
+    }else if(color==ROOT-STYLES.sur-theme-colors.error.normal){
+      ROOT-STYLES.sur-theme-colors.error.deeper
+    }else{
+      ROOT-STYLES.sur-theme-colors.error.deepest
+    }
+  }
+  pure function dark-deeper(color:brush)->brush {
+    if(color==ROOT-STYLES.sur-theme-colors.dark.weakest){
+      ROOT-STYLES.sur-theme-colors.dark.weaker
+    }else if(color==ROOT-STYLES.sur-theme-colors.dark.weaker){
+      ROOT-STYLES.sur-theme-colors.dark.normal
+    }else if(color==ROOT-STYLES.sur-theme-colors.dark.normal){
+      ROOT-STYLES.sur-theme-colors.dark.deeper
+    }else{
+      ROOT-STYLES.sur-theme-colors.dark.deepest
+    }
+  }
+}
+
+

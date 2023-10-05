@@ -1,0 +1,106 @@
+/**
+* ============================================
+* @author:syf20020816@outlook.com
+* @since:20230907
+* @version:0.0.1
+* @type:interface
+* @description:
+* # SURCard
+* A very simple universal card without any layout or restrictions
+* you can add anything you want to the card
+* ## properties
+* - in property <Themes> theme : Surrealism Themes
+* - in property <length> card-height : card height 👍
+* - in property <length> card-width : card width 👍
+* - in property <PaddingSize> padding-size : card padding size
+* - in property <Shadows> shadow : card shadow type
+* - in property <Borders> border : card border type
+* - in-out property <PaddingItem> card-padding : card padding 
+* ============================================
+*/
+
+
+import {ROOT_STYLES,Themes,PaddingSize,PaddingItem,Shadows,Borders,BorderItem} from "../../themes/index.slint";
+
+enum Alignment{
+  Horizontal,
+  Vertical
+}
+
+
+export component Card inherits Rectangle{
+  height: ROOT-STYLES.count-height(card-height,self.padding-top);
+  width: ROOT-STYLES.count-width(card-width,self.padding-left);
+  border-radius: ROOT-STYLES.get-border(border).border-radius;
+  border-width : ROOT-STYLES.get-border(border).border-width;
+  // padding: ROOT-STYLES.sur-padding.normal.same;
+  drop-shadow-offset-x : ROOT-STYLES.get-shadow-x(shadow);
+  drop-shadow-offset-y : ROOT-STYLES.get-shadow-y(shadow);
+  drop-shadow-blur : ROOT-STYLES.get-shadow-blur(shadow);
+  in property <Themes> theme : Themes.Light;
+  in property <length> card-height:ROOT-STYLES.sur-font.font-size;
+  in property <length> card-width;
+  in property <PaddingSize> padding-size:Normal;
+  in property <Shadows> shadow : Shadows.Low1;
+  in property <Borders> border : Borders.Normal;
+  in-out property <PaddingItem> card-padding;
+  init => {
+    self.card-padding = ROOT-STYLES.get-padding(padding-size);
+    self.padding-top = self.card-padding.top-bottom;
+    self.padding-bottom = self.card-padding.top-bottom;
+    self.padding-left = self.card-padding.left-right;
+    self.padding-right = self.card-padding.left-right;
+  }
+  states [
+    light when theme == Themes.Light: {
+      root.background : ROOT-STYLES.sur-theme-colors.light.normal;
+      root.border-color : ROOT-STYLES.sur-theme-colors.light.normal;
+      root.drop-shadow-color : ROOT-STYLES.sur-theme-colors.light.deepest;
+      
+    }
+    primary when theme == Themes.Primary: {
+      root.background : ROOT-STYLES.sur-theme-colors.primary.normal;
+      root.drop-shadow-color: ROOT-STYLES.sur-theme-colors.primary.deepest;
+      root.border-color : ROOT-STYLES.sur-theme-colors.primary.normal;
+    }
+    success when theme == Themes.Success: {
+      root.background : ROOT-STYLES.sur-theme-colors.success.normal;
+      root.drop-shadow-color: ROOT-STYLES.sur-theme-colors.success.deepest;
+      root.border-color : ROOT-STYLES.sur-theme-colors.success.normal;
+    }
+    info when theme == Themes.Info: {
+      root.background : ROOT-STYLES.sur-theme-colors.info.normal;
+      root.drop-shadow-color: ROOT-STYLES.sur-theme-colors.info.deepest;
+      root.border-color : ROOT-STYLES.sur-theme-colors.info.normal;
+    }
+    warning when theme == Themes.Warning: {
+      root.background : ROOT-STYLES.sur-theme-colors.warning.normal;
+      root.drop-shadow-color: ROOT-STYLES.sur-theme-colors.warning.deepest;
+      root.border-color : ROOT-STYLES.sur-theme-colors.warning.normal;
+    }
+    error when theme == Themes.Error: {
+      root.background : ROOT-STYLES.sur-theme-colors.error.normal;
+      root.drop-shadow-color: ROOT-STYLES.sur-theme-colors.error.deepest;
+      root.border-color : ROOT-STYLES.sur-theme-colors.error.normal;
+    }
+    dark when theme == Themes.Dark: {
+      root.background : ROOT-STYLES.sur-theme-colors.dark.normal;
+      root.drop-shadow-color: ROOT-STYLES.sur-theme-colors.dark.deepest;
+      root.border-color : ROOT-STYLES.sur-theme-colors.dark.normal;
+    }
+  ]
+  // animation
+  animate background {
+    duration: ROOT-STYLES.sur-an-duration;
+    easing: ROOT-STYLES.sur-an-easing;
+  }
+  animate height {
+    duration: ROOT-STYLES.sur-an-duration;
+    easing: ROOT-STYLES.sur-an-easing;
+  }
+  animate width {
+    duration: ROOT-STYLES.sur-an-duration;
+    easing: ROOT-STYLES.sur-an-easing;
+  }
+  @children
+}

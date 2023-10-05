@@ -1,0 +1,111 @@
+import { SURText, SURButton, SURInput} from "../surrealism-ui_0.1.4/index.slint";
+import {Themes } from "../surrealism-ui_0.1.4/themes/index.slint";
+import { ListView } from "std-widgets.slint";
+import { SURCard } from "../surrealism-ui_0.1.4/src/card/index.slint";
+export component App inherits Window {
+    preferred-height: 720px;
+    width: 360px;
+    default-font-size: 16px;
+    default-font-weight: 400;
+    default-font-family: "Verdana";
+    title: "TODO";
+    icon: @image-url("./static/logo.png");
+    in property <string> date : "Invalid date";
+    in property <string> clock : "Invalid clock";
+    in-out property <string> todo-input : add-input.content;
+    in property <[string]> todo-list : [
+      "Weak Up at 8:00",
+      "Eat some cakes",
+      "play with friends",
+    ];
+    private property <Themes> theme : Dark;
+    callback click-add();
+    callback click-clear();
+    VerticalLayout {
+      spacing: 0;
+      //时间
+      time-view:=Rectangle {
+        height: 60px;
+        width: 100%;
+        VerticalLayout {
+          date:=Rectangle {
+            SURText{
+              font-size: 18px;
+              theme: root.theme;
+              content: root.date;
+              font-weight: 700;
+            }
+          }
+          time:=Rectangle {
+            SURText{
+              theme: root.theme;
+              content: root.clock;
+            }
+          }
+        }
+      }
+      //待办
+      todo-view:=Rectangle {
+        width: 100%;
+        VerticalLayout {
+          padding-left: 6px;
+          Rectangle {
+            height: 60px;
+            width: 100%;
+            HorizontalLayout {
+              padding-right: 6px;
+              spacing: 6px;
+              width: 100%;
+              alignment: space-between;
+              Rectangle {
+                add-input:=SURInput {
+                  input-width: 200px; 
+                  theme: Dark;
+                  placeholder: "Please input the todo work";
+                  
+                }
+              }
+              Rectangle {
+                width: add-btn.width;
+                add-btn:=SURButton {
+                  theme: Primary;
+                  content: "ADD TODO";
+                  clicked => {
+                    root.click-add();
+                  }
+                }
+              }
+            }
+          }
+          Rectangle {
+            width: 100%;
+            ListView { 
+              for item in root.todo-list: Rectangle {
+                height: todo-card.height + 8px;
+                  todo-card:=SURCard { 
+                    theme: root.theme;
+                    height: 36px;
+                    width: 100%;
+                    SURText {
+                      theme: root.theme;
+                      content: item;
+                    }
+                  }
+              }
+            }
+          }
+          Rectangle {
+            height: 60px;
+            width: 100%;
+            SURButton { 
+              theme: Warning;
+              content: "CLEAR TODOS";
+              clicked => {
+                root.click-clear();
+              }
+            }
+          }
+        }
+      }
+    }
+}

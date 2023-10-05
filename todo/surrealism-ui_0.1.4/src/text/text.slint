@@ -1,0 +1,70 @@
+/**
+* ============================================
+* @author:syf20020816@outlook.com
+* @since:20230905
+* @version:0.0.1
+* @type:interface
+* @description: 
+* # SURText
+* It is the simplest and most common component in SurrealismUI
+* ## properties:
+* - in property <Themes> theme : Surrealism themes
+* - in-out property <string> content : the content in SURText
+* ## callbacks: 
+* ## functions:
+* - pure public function get()->string : get content
+* - public function set(content:string) : set content
+* ============================================
+*/
+
+import {ROOT_STYLES,Themes} from "../../themes/index.slint";
+export component Span inherits Text{
+  //normal
+  text: content;
+  color: ROOT-STYLES.sur-theme-colors.primary.weakest;
+  // font styles:
+  font-weight: ROOT-STYLES.sur-font.font-weight;
+  font-size: ROOT-STYLES.sur-font.font-size;
+  font-family: ROOT-STYLES.sur-font.font-family;
+  font-italic: ROOT-STYLES.sur-font.font-italic;
+  letter-spacing: ROOT-STYLES.sur-font.letter-spacing;
+  //alignment: 
+  horizontal-alignment: center;
+  vertical-alignment: center;
+  //wrap
+  wrap: no-wrap;
+  overflow: elide;
+  //props
+  in property <Themes> theme : Themes.Light;
+  in-out property <string> content : "SURText";
+  //functions
+  public function set(content:string) {
+    self.content = content;
+  }
+  pure public function get()->string {
+    self.content
+  }
+  states [
+    light when theme == Themes.Light: {
+      root.color : ROOT-STYLES.sur-theme-colors.light.font;
+    }
+    primary when theme == Themes.Primary: {
+      root.color : ROOT-STYLES.sur-theme-colors.primary.font;
+    }
+    success when theme == Themes.Success: {
+      root.color : ROOT-STYLES.sur-theme-colors.success.font;
+    }
+    info when theme == Themes.Info: {
+      root.color : ROOT-STYLES.sur-theme-colors.info.font;
+    }
+    warning when theme == Themes.Warning: {
+      root.color : ROOT-STYLES.sur-theme-colors.warning.font;
+    }
+    error when theme == Themes.Error: {
+      root.color : ROOT-STYLES.sur-theme-colors.error.font;
+    }
+    dark when theme == Themes.Dark: {
+      root.color : ROOT-STYLES.sur-theme-colors.dark.font;
+    }
+]
+}

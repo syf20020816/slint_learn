@@ -1,0 +1,34 @@
+/**
+* ============================================
+* @author:syf20020816@outlook.com
+* @since:20230905
+* @version:0.0.1
+* @type:interface
+* @description:Struct for Theme Color
+* ============================================
+*/
+
+struct ColorItem {
+  name:string,
+  weakest:brush,
+  weaker:brush,
+  normal:brush,
+  deeper:brush,
+  deepest:brush,
+  font:brush,
+  opacity:brush,
+}
+
+struct ThemeColor {
+  light:ColorItem,
+  primary: ColorItem,
+  success:ColorItem,
+  info:ColorItem,
+  warning:ColorItem,
+  error:ColorItem,
+  dark:ColorItem,
+}
+
+export { 
+  ThemeColor
+}

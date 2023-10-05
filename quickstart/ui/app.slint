@@ -1,0 +1,15 @@
+export component App inherits Window {
+    height: 400px;
+    width: 360px;
+    default-font-size: 16px;
+    in property <string> content : "hello";
+    callback clicked();
+    TouchArea {
+      Text {
+        text: root.content;
+      }
+      clicked => {
+        root.clicked()
+      }
+    }
+}
