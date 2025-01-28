@@ -39,9 +39,9 @@
 
 我建议大家使用VSCode进行Slint开发，VSCode提供的插件对Slint十分友好，插件如下：
 
-![image-20230902121630598](.\README\imgs\image-20230902121630598.png)
+![image-20230902121630598](./README/imgs/image-20230902121630598.png)
 
-![image-20230902121638124](.\README\imgs\image-20230902121638124.png)
+![image-20230902121638124](./README/imgs/image-20230902121638124.png)
 
 # Slint With Rust
 
@@ -63,7 +63,7 @@ slint::slint!{}
 
 实际上更推荐更好的方式应该是slint文件于rs文件的分离
 
-![image-20230901032611576](.\README\imgs\image-20230901032611576.png)
+![image-20230901032611576](./README/imgs/image-20230901032611576.png)
 
 ## 1.添加编译依赖（slint-build）
 
@@ -135,7 +135,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901044105838](.\README\imgs\image-20230901044105838.png)
+![image-20230901044105838](./README/imgs/image-20230901044105838.png)
 
 ## 文本Text
 
@@ -165,7 +165,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901045927835](.\README\imgs\image-20230901045927835.png)
+![image-20230901045927835](./README/imgs/image-20230901045927835.png)
 
 ## 按钮Button
 
@@ -190,7 +190,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901055536612](.\README\imgs\image-20230901055536612.png)
+![image-20230901055536612](./README/imgs/image-20230901055536612.png)
 
 ### functions
 
@@ -263,7 +263,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901082823831](.\README\imgs\image-20230901082823831.png)
+![image-20230901082823831](./README/imgs/image-20230901082823831.png)
 
 ## 输入框TextInput
 
@@ -294,7 +294,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901082809428](.\README\imgs\image-20230901082809428.png)
+![image-20230901082809428](./README/imgs/image-20230901082809428.png)
 
 ## 图片Image
 
@@ -320,7 +320,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901082746288](.\README\imgs\image-20230901082746288.png)
+![image-20230901082746288](./README/imgs/image-20230901082746288.png)
 
 ## 滚动窗口 Flickable
 
@@ -348,7 +348,7 @@ export component MainWindow inherits Dialog {
 }
 ```
 
-![image-20230901091507127](.\README\imgs\image-20230901091507127.png)
+![image-20230901091507127](./README/imgs/image-20230901091507127.png)
 
 ## 网格布局 GridLayout
 
@@ -369,7 +369,7 @@ export component MainWindow inherits Dialog {
 >
 > 这里的第二行的白色Rectangle列占比应该是2但是显示的却是1，经过叠放检查得出白色盒子的另一半被绿色覆盖，所以弱指定无法推测出绿色盒子实际上应该在第3列，需要手动指定`col:2`
 >
-> ![image-20230901132355723](.\README\imgs\image-20230901132355723.png)
+> ![image-20230901132355723](./README/imgs/image-20230901132355723.png)
 
 ### example
 
@@ -397,7 +397,7 @@ export component MainWindow inherits Dialog {
 }
 ```
 
-![image-20230901133014226](.\README\imgs\image-20230901133014226.png)
+![image-20230901133014226](./README/imgs/image-20230901133014226.png)
 
 ## 横纵布局 HorizontalLayout | VerticalLayout
 
@@ -451,7 +451,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901135602285](.\README\imgs\image-20230901135602285.png)
+![image-20230901135602285](./README/imgs/image-20230901135602285.png)
 
 ### VerticalLayout
 
@@ -499,7 +499,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901140211538](.\README\imgs\image-20230901140211538.png)
+![image-20230901140211538](./README/imgs/image-20230901140211538.png)
 
 ## 画板 Path
 
@@ -523,7 +523,7 @@ commands:"M ..."
 - `A(radius_x:float,radius_y:float,large_arc:bool,sweep:bool,x_rotation:float,x:float,y:float)`: `ArcTo`
   - radius_x : 内切椭圆横长半径
   - radius_y : 内切椭圆纵长半径
-  - ![image-20230901143834518](.\README\imgs\image-20230901143834518.png)
+  - ![image-20230901143834518](./README/imgs/image-20230901143834518.png)
   - large_arc：在封闭椭圆的两个弧中，此标志选择要渲染较大的弧。如果属性为false，则会呈现较短的弧度
   - sweep：绘制顺时针或逆时针方向（true为顺时针）
   - x_rotation：内切椭圆按照x轴旋转的度数
@@ -579,7 +579,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230901141811696](.\README\imgs\image-20230901141811696.png)
+![image-20230901141811696](./README/imgs/image-20230901141811696.png)
 
 ## 🚩Flag
 
@@ -787,7 +787,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230902203615470](.\README\imgs\image-20230902203615470.png)
+![image-20230902203615470](./README/imgs/image-20230902203615470.png)
 
 ### 数组
 
@@ -865,7 +865,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230902201146649](.\README\imgs\image-20230902201146649.png)
+![image-20230902201146649](./README/imgs/image-20230902201146649.png)
 
 ## 函数与回调
 
@@ -888,7 +888,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903013751972](.\README\imgs\image-20230903013751972.png)
+![image-20230903013751972](./README/imgs/image-20230903013751972.png)
 
 ### 回调
 
@@ -929,7 +929,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903021224754](.\README\imgs\image-20230903021224754.png)
+![image-20230903021224754](./README/imgs/image-20230903021224754.png)
 
 #### 回调别名
 
@@ -992,7 +992,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903030107025](.\README\imgs\image-20230903030107025.png)
+![image-20230903030107025](./README/imgs/image-20230903030107025.png)
 
 ## 动画
 
@@ -1072,7 +1072,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903192248570](.\README\imgs\image-20230903192248570.png)
+![image-20230903192248570](./README/imgs/image-20230903192248570.png)
 
 ### 通过状态更改动画
 
@@ -1110,7 +1110,7 @@ export component AnStates inherits Window {
 }
 ```
 
-![image-20230903195333897](.\README\imgs\image-20230903195333897.png)
+![image-20230903195333897](./README/imgs/image-20230903195333897.png)
 
 ## 👎插槽
 
@@ -1137,7 +1137,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903150148442](.\README\imgs\image-20230903150148442.png)
+![image-20230903150148442](./README/imgs/image-20230903150148442.png)
 
 ## 模块的导入和导出
 
@@ -1237,7 +1237,7 @@ export component Example inherits Window {
 
 ```
 
-![image-20230903143604497](.\README\imgs\image-20230903143604497.png)
+![image-20230903143604497](./README/imgs/image-20230903143604497.png)
 
 ### functions
 
@@ -1309,7 +1309,7 @@ export component MainWindow inherits Window {
 }
 ```
 
-![image-20230903182503163](.\README\imgs\image-20230903182503163.png)
+![image-20230903182503163](./README/imgs/image-20230903182503163.png)
 
 ### functions
 
@@ -1602,7 +1602,7 @@ drop-shadow-offset-x：2px;
 | image-rendering                       | 图片缩放方式（ImageRendering）    | image-rendering: smooth;                   |
 | rotation-origin-x，rotation-origin-y  | 设置旋转中心的位置（Length.size） | rotation-origin-x: 23px;                   |
 | rotation-angle                        | 旋转角度（angle）                 | rotation-angle: 30deg;                     |
-| source-clip-height，source-clip-width | 裁剪高度\|宽度（Length.size）     | source-clip-height: 200;                   |
+| source-clip-height，source-clip-width | 裁剪高度/|宽度（Length.size）     | source-clip-height: 200;                   |
 | source-clip-x，source-clip-y          | 裁剪位置（Length.size）           | source-clip-x: 100;                        |
 
 ### ImageFit
